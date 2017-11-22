@@ -1,6 +1,6 @@
 var Sequelize = require("sequelize");
-//var db = new Sequelize('postgres://localhost:5432'+'/tripplaner'); 
-var db = new Sequelize("postgres://ubuntu:1234@localhost/tripplaner") ////it is for sazi
+var db = new Sequelize('postgres://localhost:5432'+'/tripplaner'); 
+//var db = new Sequelize("postgres://ubuntu:1234@localhost/tripplaner") ////it is for sazi
 
 var Place = db.define("place", {
     

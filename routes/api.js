@@ -12,12 +12,11 @@ module.exports=router;
 router.get("/", function(req,res,next){
     console.log("ejkhagjşlrkhşg");
     var proArr=[];
-    var hotels = Hotel.findAll({})
-    var restaurants =  Restaurant.findAll({});
-    var activities = Activity.findAll({});
+    var hotels = Hotel.findAll({include : [Place]})
+    var restaurants =  Restaurant.findAll({include : [Place]});
+    var activities = Activity.findAll({include : [Place]});
     var places =  Place.findAll({}); 
     proArr.push(hotels,restaurants,activities,places);
-    
     Promise.all(proArr).
     then(function(result){
         res.send(result);
@@ -27,4 +26,8 @@ router.get("/", function(req,res,next){
     });
     
 }) ;
+
+
+
+
 
