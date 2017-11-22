@@ -2,9 +2,11 @@ const path = require('path');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const port = 3000;
+const port = 8080;//for sazi
+//const port = 3000;
 const morgan = require('morgan');
 const models = require('./models');
+const apiRouter = require("../routes/api.js");
 var db = models.db;
 
 
@@ -13,7 +15,7 @@ app.use(express.static(path.join(__dirname, '..' , "public")));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(morgan("dev"));
-
+app.use("/api",apiRouter);
 //ROUTING MIDDLEWARE
 
 app.use(function(req, res, next) {
@@ -30,6 +32,7 @@ res.status(err.status || 500);
 console.error(err);
 res.send(err.message || "Internal Error");
 });
+
 
 
 app.listen(port, function(){
